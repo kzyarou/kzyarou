@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="scroll-smooth"
+  x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+  :class="{ 'dark': darkMode }"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zachary Paul Rapis | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2563eb",
+              secondary: "#1e40af",
+              dark: "#1f2937",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="font-poppins bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+  >
+    <!-- Enhanced Navbar -->
+    <nav
+      x-data="{ isOpen: false }"
+      class="fixed w-full bg-white/90 dark:bg-gray-800/90 shadow-md z-50 transition-all duration-300 backdrop-blur-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a
+              href="#"
+              class="text-2xl font-bold text-primary dark:text-blue-400"
+              >kzyarou</a
+            >
+          </div>
+
+          <!-- Theme Toggle and Mobile Menu Button -->
+          <div class="flex items-center space-x-4">
+            <button
+              @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)"
+              class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors"
+            >
+              <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
+            <button
+              @click="isOpen = !isOpen"
+              class="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 sm:hidden"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  x-show="!isOpen"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+                <path
+                  x-show="isOpen"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Desktop menu -->
+          <div class="hidden sm:flex sm:items-center sm:space-x-8">
+            <a
+              href="#home"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="isOpen" class="sm:hidden">
+          <div class="pt-2 pb-3 space-y-1">
+            <a
+              href="#home"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center pt-16 px-4 relative overflow-hidden"
+    >
+      <div id="particles-js" class="absolute inset-0 z-0"></div>
+      <div class="max-w-7xl mx-auto text-center content-layer relative z-10">
+        <div class="float-element mb-8">
+          <img
+            src="https://avatars.dicebear.com/api/micah/kzyarou.svg"
+            alt="Avatar"
+            class="w-32 h-32 mx-auto rounded-full shadow-lg dark:shadow-blue-500/20 enhanced-card"
+          />
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-bold mb-4 reveal">
+          Hi, I'm
+          <span class="text-gradient">Zachary Paul</span>
+        </h1>
+        <p
+          class="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 reveal"
+        >
+          <span id="typed-text"></span>
+        </p>
+        <div class="flex justify-center space-x-4 reveal">
+          <a
+            href="#contact"
+            class="magnetic-button bg-primary dark:bg-blue-600 hover:bg-secondary dark:hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300"
+            >Get in Touch</a
+          >
+          <a
+            href="#about"
+            class="magnetic-button bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-blue-400 border-2 border-primary dark:border-blue-400 px-8 py-3 rounded-full transition-all duration-300"
+            >Learn More</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced About Section -->
+    <section
+      id="about"
+      class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300 relative overflow-hidden"
+    >
+      <div id="about-particles"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 about-content">
+        <h2
+          class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12 reveal"
+        >
+          About Me
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div class="space-y-8">
+            <div
+              class="tilt-card bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 reveal"
+            >
+              <div class="tilt-content flex items-center space-x-6">
+                <img
+                  src="https://avatars.dicebear.com/api/micah/kzyarou.svg"
+                  alt="Profile"
+                  class="w-24 h-24 rounded-full border-4 border-primary dark:border-blue-400"
+                />
+                <div>
+                  <h3
+                    class="text-xl font-semibold text-gray-800 dark:text-white"
+                  >
+                    Zachary Paul Rapis
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300">@kzyarou</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline reveal">
+              <div class="timeline-item">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Started Coding Journey
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Discovered my passion for web development and began learning
+                  HTML and CSS.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  First Website
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Created my first responsive website using modern technologies.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Expanding Knowledge
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Currently exploring advanced web development concepts and
+                  frameworks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-lg text-gray-600 dark:text-gray-300 reveal">
+              Hello! I'm Zachary Paul Robillon Rapis, but you can call me Zach.
+              As a senior high school student, I'm deeply passionate about
+              technology, creativity, and innovation.
+            </p>
+            <p class="text-lg text-gray-600 dark:text-gray-300 reveal">
+              My journey in web development has led me to explore various
+              technologies, with a current focus on HTML, CSS, and Tailwind CSS.
+              I love creating responsive and visually engaging websites that
+              provide great user experiences.
+            </p>
+            <p class="text-lg text-gray-600 dark:text-gray-300 reveal">
+              Known online as "kzyarou", I'm constantly learning and pushing
+              myself to grow in the field of web development. I believe in
+              building digital tools that not only look good but also help
+              people in meaningful ways.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div
+                class="fact-card bg-primary/10 dark:bg-blue-400/10 rounded-lg p-6 reveal"
+              >
+                <i
+                  class="fas fa-graduation-cap text-primary dark:text-blue-400 text-2xl mb-4"
+                ></i>
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Student
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  Senior High School
+                </p>
+              </div>
+              <div
+                class="fact-card bg-primary/10 dark:bg-blue-400/10 rounded-lg p-6 reveal"
+              >
+                <i
+                  class="fas fa-code text-primary dark:text-blue-400 text-2xl mb-4"
+                ></i>
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Developer
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  Web Technologies
+                </p>
+              </div>
+              <div
+                class="fact-card bg-primary/10 dark:bg-blue-400/10 rounded-lg p-6 reveal"
+              >
+                <i
+                  class="fas fa-palette text-primary dark:text-blue-400 text-2xl mb-4"
+                ></i>
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Designer
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  UI/UX Enthusiast
+                </p>
+              </div>
+              <div
+                class="fact-card bg-primary/10 dark:bg-blue-400/10 rounded-lg p-6 reveal"
+              >
+                <i
+                  class="fas fa-lightbulb text-primary dark:text-blue-400 text-2xl mb-4"
+                ></i>
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                  Innovator
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  Problem Solver
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Skills Section -->
+    <section
+      id="skills"
+      class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 reveal">My Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+          >
+            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">HTML5</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Strong foundation in semantic HTML markup and best practices.
+            </p>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
+                style="width: 90%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+          >
+            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">CSS3</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Proficient in creating responsive and attractive layouts.
+            </p>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
+                style="width: 85%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+          >
+            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+              <i class="fab fa-css3"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">
+              Tailwind CSS
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Experience with utility-first CSS framework for rapid development.
+            </p>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
+                style="width: 80%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="min-h-screen bg-white dark:bg-gray-800 transition-colors duration-300 relative overflow-hidden"
+      x-data="{
+        currentSlide: 0,
+        totalSlides: 3,
+        interval: null,
+        isScrolling: false,
+        lastScrollTime: 0,
+        autoplayDuration: 2000, // 2 seconds per slide
+        init() {
+          this.startAutoplay();
+          window.addEventListener('wheel', (e) => this.handleScroll(e));
+          window.addEventListener('touchstart', (e) => this.handleTouchStart(e));
+          window.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+        },
+        next() {
+          if (this.isScrolling) return;
+          this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+          this.isScrolling = true;
+          setTimeout(() => { this.isScrolling = false; }, 800);
+        },
+        prev() {
+          if (this.isScrolling) return;
+          this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+          this.isScrolling = true;
+          setTimeout(() => { this.isScrolling = false; }, 800);
+        },
+        goToSlide(index) {
+          if (this.isScrolling) return;
+          this.currentSlide = index;
+          this.isScrolling = true;
+          setTimeout(() => { this.isScrolling = false; }, 800);
+          this.restartAutoplay();
+        },
+        startAutoplay() {
+          if (this.interval) clearInterval(this.interval);
+          this.interval = setInterval(() => {
+            if (!this.isScrolling) {
+              this.next();
+            }
+          }, this.autoplayDuration);
+        },
+        stopAutoplay() {
+          if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+          }
+        },
+        restartAutoplay() {
+          this.stopAutoplay();
+          this.startAutoplay();
+        },
+        handleScroll(e) {
+          const now = Date.now();
+          if (now - this.lastScrollTime < 800) return;
+          this.lastScrollTime = now;
+          
+          if (e.deltaY > 0) {
+            this.next();
+          } else {
+            this.prev();
+          }
+          this.restartAutoplay();
+        },
+        touchStartY: 0,
+        handleTouchStart(e) {
+          this.touchStartY = e.touches[0].clientY;
+        },
+        handleTouchMove(e) {
+          const now = Date.now();
+          if (now - this.lastScrollTime < 800) return;
+          
+          const touchEndY = e.touches[0].clientY;
+          const diff = this.touchStartY - touchEndY;
+          
+          if (Math.abs(diff) > 50) {
+            this.lastScrollTime = now;
+            if (diff > 0) {
+              this.next();
+            } else {
+              this.prev();
+            }
+            this.restartAutoplay();
+          }
+        }
+      }"
+      @mouseover="stopAutoplay"
+      @mouseleave="startAutoplay"
+      @click="restartAutoplay"
+    >
+      <div class="carousel-container">
+        <!-- Navigation Buttons -->
+        <button
+          class="carousel-nav-button prev magnetic-button dark:bg-gray-700/50 dark:text-blue-400"
+          @click="prev"
+          aria-label="Previous project"
+        >
+          <i class="fas fa-chevron-left text-xl"></i>
+        </button>
+
+        <button
+          class="carousel-nav-button next magnetic-button dark:bg-gray-700/50 dark:text-blue-400"
+          @click="next"
+          aria-label="Next project"
+        >
+          <i class="fas fa-chevron-right text-xl"></i>
+        </button>
+
+        <!-- Carousel Track -->
+        <div
+          class="carousel-track"
+          :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+        >
+          <!-- STEMediaHub Project -->
+          <div class="carousel-slide" :class="{ 'active': currentSlide === 0 }">
+            <div
+              class="carousel-card enhanced-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-xl"
+            >
+              <div
+                class="relative h-64 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center overflow-hidden"
+              >
+                <i
+                  class="fas fa-graduation-cap text-8xl text-white opacity-90"
+                ></i>
+                <div class="absolute inset-0 bg-black opacity-20"></div>
+              </div>
+              <div class="p-8">
+                <h3 class="project-title">STEMediaHub</h3>
+                <p class="project-description text-gray-600 dark:text-gray-300">
+                  An educational platform designed to support STEM students who
+                  are facing challenges in their strand. Features interactive
+                  learning resources, peer support, and personalized study
+                  paths.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <span
+                    class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full"
+                    >Education</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full"
+                    >STEM</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full"
+                    >E-Learning</span
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
+                >
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Musica Project -->
+          <div class="carousel-slide" :class="{ 'active': currentSlide === 1 }">
+            <div
+              class="carousel-card enhanced-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-xl"
+            >
+              <div
+                class="relative h-64 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden"
+              >
+                <i class="fas fa-music text-8xl text-white opacity-90"></i>
+                <div class="absolute inset-0 bg-black opacity-20"></div>
+              </div>
+              <div class="p-8">
+                <h3 class="project-title">Musica</h3>
+                <p class="project-description text-gray-600 dark:text-gray-300">
+                  A sleek and intuitive music player application that provides a
+                  seamless listening experience. Features playlist management,
+                  audio visualization, and customizable themes.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <span
+                    class="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full"
+                    >Music</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full"
+                    >Audio</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full"
+                    >Entertainment</span
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
+                >
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- WriteIt Project -->
+          <div class="carousel-slide" :class="{ 'active': currentSlide === 2 }">
+            <div
+              class="carousel-card enhanced-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-xl"
+            >
+              <div
+                class="relative h-64 bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center overflow-hidden"
+              >
+                <i class="fas fa-comments text-8xl text-white opacity-90"></i>
+                <div class="absolute inset-0 bg-black opacity-20"></div>
+              </div>
+              <div class="p-8">
+                <h3 class="project-title">WriteIt</h3>
+                <p class="project-description text-gray-600 dark:text-gray-300">
+                  A social media platform championing free speech and open
+                  dialogue. Features a Twitter-like interface with enhanced
+                  privacy controls and uncensored content sharing capabilities.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                  <span
+                    class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full"
+                    >Social Media</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full"
+                    >Free Speech</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full"
+                    >Privacy</span
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
+                >
+                  <span>View Project</span>
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <template x-for="(_, index) in Array(totalSlides)" :key="index">
+            <button
+              class="carousel-indicator"
+              :class="{ 'active': currentSlide === index }"
+              @click="goToSlide(index)"
+              :aria-label="'Go to project ' + (index + 1)"
+            ></button>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <section
+      id="contact"
+      class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 reveal">
+          Get in Touch
+        </h2>
+        <div class="max-w-3xl mx-auto">
+          <form x-data="{ status: 'idle' }" class="space-y-6">
+            <div>
+              <label
+                for="name"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary dark:focus:border-blue-400 focus:ring-primary dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white enhanced-input"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary dark:focus:border-blue-400 focus:ring-primary dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white enhanced-input"
+              />
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary dark:focus:border-blue-400 focus:ring-primary dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white enhanced-input"
+              ></textarea>
+            </div>
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="magnetic-button bg-primary dark:bg-blue-600 hover:bg-secondary dark:hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer
+      class="bg-dark dark:bg-gray-800 text-white py-12 transition-colors duration-300 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4 text-white">kzyarou</h3>
+            <p class="text-gray-400">
+              Senior high school student passionate about web development and
+              technology.
+            </p>
+          </div>
+          <div class="flex justify-start md:justify-end items-center space-x-6">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fab fa-github text-2xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fab fa-twitter text-2xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fab fa-linkedin text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Zachary Paul. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="particles-config.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
