@@ -14,6 +14,47 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Custom cursor functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  const ring = document.createElement("div");
+  cursor.className = "custom-cursor";
+  ring.className = "cursor-ring";
+  document.body.appendChild(cursor);
+  document.body.appendChild(ring);
+
+  // Update cursor position
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+    ring.style.left = e.clientX + "px";
+    ring.style.top = e.clientY + "px";
+  });
+
+  // Click animation
+  document.addEventListener("mousedown", () => {
+    cursor.classList.add("clicking");
+    ring.classList.add("clicking");
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.classList.remove("clicking");
+    ring.classList.remove("clicking");
+  });
+
+  // Ensure cursor is visible when mouse enters window
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+    ring.style.opacity = "1";
+  });
+
+  // Hide cursor when mouse leaves window
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+    ring.style.opacity = "0";
+  });
+});
+
 // Cursor elements
 const cursor = document.createElement("div");
 cursor.classList.add("custom-cursor");
@@ -33,17 +74,6 @@ let mouseY = -100;
 let ringX = -100;
 let ringY = -100;
 let rafId = null;
-
-// Update cursor position
-document.addEventListener("mousemove", (e) => {
-  // Move main cursor immediately for responsiveness
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-
-  // Move ring with smooth follow
-  cursorRing.style.left = `${e.clientX}px`;
-  cursorRing.style.top = `${e.clientY}px`;
-});
 
 // Smooth cursor ring movement
 function updateCursorRing() {
@@ -86,21 +116,6 @@ interactiveElements.forEach((element) => {
 
 // Hide default cursor
 document.body.style.cursor = "none";
-
-// Hide cursor elements when mouse leaves window
-document.addEventListener("mouseleave", () => {
-  cursor.style.opacity = "0";
-  cursorRing.style.opacity = "0";
-  cursorDot.style.opacity = "0";
-  mouseX = -100;
-  mouseY = -100;
-});
-
-document.addEventListener("mouseenter", () => {
-  cursor.style.opacity = "1";
-  cursorRing.style.opacity = "1";
-  cursorDot.style.opacity = "1";
-});
 
 // Reveal on scroll
 function reveal() {

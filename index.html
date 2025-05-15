@@ -8,7 +8,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zachary Paul Rapis | Portfolio</title>
+    <title>Zachary Paul Rapis | Full Stack Developer & UI/UX Designer</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Zachary Paul Rapis is a passionate full-stack developer and UI/UX designer specializing in web development, Java, JavaScript, and modern frameworks."
+    />
+    <meta
+      name="keywords"
+      content="Zachary Paul Rapis, Web Developer, UI/UX Designer, Full Stack Developer, Java, JavaScript, React, HTML5, CSS3, Tailwind CSS"
+    />
+    <meta name="author" content="Zachary Paul Rapis" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta
+      property="og:title"
+      content="Zachary Paul Rapis | Full Stack Developer & UI/UX Designer"
+    />
+    <meta
+      property="og:description"
+      content="Passionate full-stack developer and UI/UX designer specializing in web development, Java, JavaScript, and modern frameworks."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kzyarou.github.io" />
+    <meta property="og:image" content="pfp.jpg" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zachary Paul Rapis | Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Passionate full-stack developer and UI/UX designer specializing in web development."
+    />
+    <meta name="twitter:image" content="pfp.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.ico" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kzyarou.github.io" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       defer
@@ -171,7 +211,7 @@
           />
         </div>
         <h1 class="text-4xl sm:text-6xl font-bold mb-4 reveal">
-          Hi, I'm
+          <span class="text-gray-800 dark:text-white">Hi, I'm</span>
           <span class="text-gradient">Zachary Paul</span>
         </h1>
         <p
@@ -340,14 +380,27 @@
     <section
       id="skills"
       class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+      aria-labelledby="skills-heading"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12 reveal">My Skills</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
+        <h2
+          id="skills-heading"
+          class="text-3xl font-bold text-center mb-12 reveal !text-black dark:!text-white"
+        >
+          My Skills
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          role="list"
+        >
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-java"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">Java</h3>
@@ -355,18 +408,29 @@
               Strong understanding of object-oriented programming and Java
               fundamentals.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="85"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Java skill level: 85%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 85%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-js"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">
@@ -375,18 +439,29 @@
             <p class="text-gray-600 dark:text-gray-300 mb-4">
               Experienced in modern JavaScript development and ES6+ features.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="88"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="JavaScript skill level: 88%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 88%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-react"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">React</h3>
@@ -394,72 +469,116 @@
               Proficient in building modern web applications using React and its
               ecosystem.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="82"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="React skill level: 82%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 82%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-python"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">Python</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4">
               Skilled in Python development for web and automation projects.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Python skill level: 80%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 80%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-html5"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">HTML5</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4">
               Strong foundation in semantic HTML markup and best practices.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="90"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="HTML5 skill level: 90%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 90%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-css3-alt"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">CSS3</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4">
               Proficient in creating responsive and attractive layouts.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="85"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="CSS3 skill level: 85%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 85%"
               ></div>
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 reveal project-card"
+            role="listitem"
           >
-            <div class="text-primary dark:text-blue-400 text-4xl mb-4">
+            <div
+              class="text-primary dark:text-blue-400 text-4xl mb-4"
+              aria-hidden="true"
+            >
               <i class="fab fa-css3"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2 dark:text-white">
@@ -468,13 +587,20 @@
             <p class="text-gray-600 dark:text-gray-300 mb-4">
               Experience with utility-first CSS framework for rapid development.
             </p>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+              role="progressbar"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Tailwind CSS skill level: 80%"
+            >
               <div
                 class="skill-progress bg-primary dark:bg-blue-400 h-2.5 rounded-full"
                 style="--progress-width: 80%"
               ></div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -487,40 +613,24 @@
         currentSlide: 0,
         totalSlides: 3,
         interval: null,
-        isScrolling: false,
-        lastScrollTime: 0,
         autoplayDuration: 2000, // 2 seconds per slide
         init() {
           this.startAutoplay();
-          window.addEventListener('wheel', (e) => this.handleScroll(e));
-          window.addEventListener('touchstart', (e) => this.handleTouchStart(e));
-          window.addEventListener('touchmove', (e) => this.handleTouchMove(e));
         },
         next() {
-          if (this.isScrolling) return;
           this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-          this.isScrolling = true;
-          setTimeout(() => { this.isScrolling = false; }, 800);
         },
         prev() {
-          if (this.isScrolling) return;
           this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-          this.isScrolling = true;
-          setTimeout(() => { this.isScrolling = false; }, 800);
         },
         goToSlide(index) {
-          if (this.isScrolling) return;
           this.currentSlide = index;
-          this.isScrolling = true;
-          setTimeout(() => { this.isScrolling = false; }, 800);
           this.restartAutoplay();
         },
         startAutoplay() {
           if (this.interval) clearInterval(this.interval);
           this.interval = setInterval(() => {
-            if (!this.isScrolling) {
-              this.next();
-            }
+            this.next();
           }, this.autoplayDuration);
         },
         stopAutoplay() {
@@ -532,39 +642,6 @@
         restartAutoplay() {
           this.stopAutoplay();
           this.startAutoplay();
-        },
-        handleScroll(e) {
-          const now = Date.now();
-          if (now - this.lastScrollTime < 800) return;
-          this.lastScrollTime = now;
-          
-          if (e.deltaY > 0) {
-            this.next();
-          } else {
-            this.prev();
-          }
-          this.restartAutoplay();
-        },
-        touchStartY: 0,
-        handleTouchStart(e) {
-          this.touchStartY = e.touches[0].clientY;
-        },
-        handleTouchMove(e) {
-          const now = Date.now();
-          if (now - this.lastScrollTime < 800) return;
-          
-          const touchEndY = e.touches[0].clientY;
-          const diff = this.touchStartY - touchEndY;
-          
-          if (Math.abs(diff) > 50) {
-            this.lastScrollTime = now;
-            if (diff > 0) {
-              this.next();
-            } else {
-              this.prev();
-            }
-            this.restartAutoplay();
-          }
         }
       }"
       @mouseover="stopAutoplay"
@@ -630,7 +707,7 @@
                   >
                 </div>
                 <a
-                  href="#"
+                  href="https://stemediahub.vercel.app"
                   class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
                 >
                   <span>View Project</span>
@@ -673,7 +750,7 @@
                   >
                 </div>
                 <a
-                  href="#"
+                  href="https://musica-lac-eta.vercel.app/"
                   class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
                 >
                   <span>View Project</span>
@@ -716,7 +793,7 @@
                   >
                 </div>
                 <a
-                  href="#"
+                  href="https://writeit-lime.vercel.app/"
                   class="magnetic-button inline-flex items-center text-lg text-primary dark:text-blue-400 hover:text-secondary dark:hover:text-blue-300 transition-colors"
                 >
                   <span>View Project</span>
@@ -747,7 +824,9 @@
       class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12 reveal">
+        <h2
+          class="text-3xl font-bold text-center mb-12 reveal !text-black dark:!text-white"
+        >
           Get in Touch
         </h2>
         <div class="max-w-3xl mx-auto">
